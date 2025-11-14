@@ -99,8 +99,8 @@ raw_data24 <- read.table(here("Data/Tides/2024_ELD_TWC1115_annual.txt"),
   mutate(Date = ymd(Date))
 #Read in the thorndyke tide data
 # Read the CSV file and convert the Date_time column to POSIXct
-thorntides <- read.csv(here("Data/Tides/2023_2024_bangor_tides.csv")) %>%
-  mutate(Date_time = as.POSIXct(Date_time, format = "%m/%d/%Y %H:%M", tz = "UTC"))
+thorntides <- read.csv(here("Data/Tides/2023th_2024_bangor_tides.csv")) %>%
+  mutate(Date_time = as.POSIXct(Date_time, format = "%m/%d/%Y %H:%M"))
 
 #Join 2023 and 2024 
 tides <- bind_rows(raw_data23, raw_data24) %>%
@@ -247,8 +247,8 @@ head(allthorndat)
 #Check that the tides match
 # Plot the water levels using ggplot2
 # Define the date range for filtering (June 1st to June 20th, 2023)
-plot_start <- as.POSIXct("2023-06-01 00:00:00", tz = "UTC")
-plot_end <- as.POSIXct("2023-06-20 23:59:59", tz = "UTC")
+plot_start <- as.POSIXct("2023-06-01 00:00:00")
+plot_end <- as.POSIXct("2023-06-20 23:59:59")
 
 # Filter allthorndat and thorntides within the specified date range
 filtered_allthorndat <- allthorndat %>%
